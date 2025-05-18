@@ -4,6 +4,7 @@ import trimesh
 from scipy.sparse import csr_matrix, diags
 from scipy.sparse.linalg import eigsh
 from itertools import combinations_with_replacement
+from os import path
 
 def compute_fem_matrices(vertices, faces):
     n_vertices = vertices.shape[0]
@@ -160,7 +161,7 @@ def plot_reconstruction(row,col,mesh, vertices_colors, title):
 
 # ------------------- Main -------------------
 print("Loading mesh and data...")
-mesh = trimesh.load_mesh('../Meshes/bunny.off', file_type='off')
+mesh = trimesh.load_mesh(path.join(path.dirname(__file__), '../Meshes/bunny.off'), file_type='off')
 # mesh = trimesh.load_mesh('Meshes/bunny.off', file_type='off')
 n_vertices = mesh.vertices.shape[0]
 

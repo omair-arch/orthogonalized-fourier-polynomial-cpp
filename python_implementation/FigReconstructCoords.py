@@ -4,6 +4,7 @@ import pyvista as pv
 from scipy.sparse import csr_matrix, diags
 from scipy.sparse.linalg import eigsh
 from itertools import combinations_with_replacement
+from os import path
 
 def compute_fem_matrices(vertices, faces):
     n_vertices = vertices.shape[0]
@@ -66,7 +67,7 @@ def create_pv_mesh(mesh, scalar_field):
 
 # Load mesh
 print("Loading mesh...")
-mesh = trimesh.load_mesh("../Meshes/205-Greek_Sculpture.off", file_type='off')
+mesh = trimesh.load_mesh(path.join(path.dirname(__file__), "../Meshes/205-Greek_Sculpture.off"), file_type='off')
 
 # FEM & eigenfunctions
 print("Computing FEM and eigendecomposition...")
