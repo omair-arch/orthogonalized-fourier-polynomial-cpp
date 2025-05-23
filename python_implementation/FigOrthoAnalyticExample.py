@@ -10,6 +10,7 @@ from PyQt5 import QtWidgets
 from pyvistaqt import QtInteractor
 from scipy.sparse import csr_matrix, diags
 from scipy.sparse.linalg import eigsh
+from os import path
 
 matplotlib.use('Qt5Agg')
 
@@ -103,8 +104,8 @@ def cp_of_c(C):
 # -------------------------
 # Mesh and eigenproblem
 # -------------------------
-Src_mesh = trimesh.load_mesh("../Meshes/TOSCA/wolf0.off", file_type='off')
-Trg_mesh = trimesh.load_mesh("../Meshes/TOSCA/wolf2.off", file_type='off')
+Src_mesh = trimesh.load_mesh(path.join(path.dirname(__file__), "../Meshes/TOSCA/wolf0.off"), file_type='off')
+Trg_mesh = trimesh.load_mesh(path.join(path.dirname(__file__), "../Meshes/TOSCA/wolf2.off"), file_type='off')
 
 S_src, A_src = compute_fem_matrices(Src_mesh.vertices, Src_mesh.faces)
 S_trg, A_trg = compute_fem_matrices(Trg_mesh.vertices, Trg_mesh.faces)

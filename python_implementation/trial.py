@@ -4,6 +4,7 @@ import trimesh
 import matplotlib.pyplot as plt
 from scipy.sparse.linalg import eigsh
 from common_functions import FEM_higher, eigprods, orthogonalize_basis, compute_dirichlet
+from os import path
 
 # -------------------------
 # Parameters
@@ -42,7 +43,7 @@ tau2 = 0.0025
 # Load and prepare the mesh
 # -------------------------
 print("Loading the mesh...")
-Src = trimesh.load_mesh(SrcFile, file_type='off')
+Src = trimesh.load_mesh(path.join(path.dirname(__file__), SrcFile), file_type='off')
 Src_points = Src.vertices
 Src_faces = Src.faces
 

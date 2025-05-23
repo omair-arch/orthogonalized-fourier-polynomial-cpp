@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from scipy.sparse.linalg import eigsh
 import pyvista as pv
 from itertools import combinations_with_replacement
+from os import path
 
 # -------------------------
 # Parameters
@@ -331,7 +332,7 @@ use_pyvista = True  # Set to True to use PyVista for plotting
 # Load mesh and compute eigenfunctions
 # -------------------------
 print("Loading mesh and computing eigenfunctions... ")
-mesh = trimesh.load_mesh(MeshFile, file_type='off')
+mesh = trimesh.load_mesh(path.join(path.dirname(__file__), MeshFile), file_type='off')
 vertices = mesh.vertices
 faces = mesh.faces
 
